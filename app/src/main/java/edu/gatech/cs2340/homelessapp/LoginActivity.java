@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
 
 
-    private HashMap<String, HomelessUser> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,12 +197,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return users.containsKey(email);
+        return Users.getUsers().containsKey(email);
     }
 
     private boolean isPasswordValid(String password, String email) {
         //TODO: Replace this with your own logic
-        HomelessUser user = users.get(email);
+        HomelessUser user = Users.getUsers().get(email);
         return password.equals(user.getPassword());
     }
 
