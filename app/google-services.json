@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "385219237032",
+    "firebase_url": "https://cs-2340-project.firebaseio.com",
+    "project_id": "cs-2340-project",
+    "storage_bucket": "cs-2340-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385219237032:android:ec68f77208d59692",
+        "android_client_info": {
+          "package_name": "edu.gatech.cs2340.homelessapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385219237032-b0mipepsqlcj58li2jp25hqbasghl5av.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5n_amvkdgGrcRvZDItIFNckvXD5FXC8A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
