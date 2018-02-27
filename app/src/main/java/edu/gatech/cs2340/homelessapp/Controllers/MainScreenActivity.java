@@ -13,6 +13,8 @@ public class MainScreenActivity extends AppCompatActivity {
     // buttons
     private Button logoutButton;
 
+    private Button shelterButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,5 +25,11 @@ public class MainScreenActivity extends AppCompatActivity {
             Intent newIntent = new Intent(MainScreenActivity.this, WelcomeActivity.class);
             startActivity(newIntent);
         });
+
+        shelterButton = (Button) findViewById(R.id.shelterButton);
+        shelterButton.setOnClickListener((view -> {
+            Intent newIntent = new Intent (MainScreenActivity.this, ShelterViewActivity.class);
+            startActivity(newIntent);
+        }));
     }
 }

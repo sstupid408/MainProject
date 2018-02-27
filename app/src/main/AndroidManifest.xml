@@ -25,7 +25,8 @@
             android:name=".Controllers.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".Controllers.MainScreenActivity" />
-        <activity android:name=".Controllers.RegisterActivity"></activity>
+        <activity android:name=".Controllers.RegisterActivity" />
+        <activity android:name=".Controllers.ShelterViewActivity"></activity>
     </application>
 
 </manifest>
