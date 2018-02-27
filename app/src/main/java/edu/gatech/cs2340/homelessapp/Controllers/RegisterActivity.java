@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Arrays;
 
 import edu.gatech.cs2340.homelessapp.R;
@@ -17,10 +20,14 @@ import edu.gatech.cs2340.homelessapp.Model.*;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         Spinner typeSpinner = (Spinner) findViewById(R.id.typeSpinner);
         Button registerButton = (Button) findViewById(R.id.registerButton);
@@ -41,7 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
             } else if (TextUtils.isEmpty(pass)) {
                 password.setError(getString(R.string.error_field_required));
             } else {
-                Users.getUsers().put(user,new HomelessUser(user, pass, (String) typeSpinner.getSelectedItem()));
+                HomelessUser newUser = new HomelessUser(user, pass, (String) typeSpinner.getSelectedItem());
+                mDatabase.child("Users").setValue(newUser);
                 Intent intent = new Intent(RegisterActivity.this, MainScreenActivity.class);
                 startActivity(intent);
             }
