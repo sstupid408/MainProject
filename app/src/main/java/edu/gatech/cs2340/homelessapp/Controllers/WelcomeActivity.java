@@ -18,7 +18,6 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
         loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener((view) -> {
             Intent newIntent = new Intent(WelcomeActivity.this, LoginActivity.class);

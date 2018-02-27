@@ -9,6 +9,10 @@ public class HomelessUser {
     private String password;
     private String type;
 
+    public HomelessUser() {
+
+    }
+
     public HomelessUser(String username, String password, String type) {
         this.username = username;
         this.password = password;
