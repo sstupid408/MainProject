@@ -41,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener((view -> {
             String user = username.getText().toString();
             String pass = password.getText().toString();
-            typeSpinner.setSelection(0);
 
             if (TextUtils.isEmpty(user)) {
                 username.setError(getString(R.string.error_field_required));
