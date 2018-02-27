@@ -8,6 +8,7 @@ public class HomelessUser {
     private String username;
     private String password;
     private String type;
+
     public HomelessUser(String username, String password, String type) {
         this.username = username;
         this.password = password;
@@ -21,4 +22,6 @@ public class HomelessUser {
     public String getUsername() {
         return username;
     }
+
+    public String getType() { return type; }
 }

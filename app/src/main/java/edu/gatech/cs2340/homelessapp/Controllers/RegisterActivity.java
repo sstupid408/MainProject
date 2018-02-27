@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
                 password.setError(getString(R.string.error_field_required));
             } else {
                 HomelessUser newUser = new HomelessUser(user, pass, (String) typeSpinner.getSelectedItem());
-                mDatabase.child("Users").setValue(newUser);
+                mDatabase.child("Users").child(user).setValue(newUser);
                 Intent intent = new Intent(RegisterActivity.this, MainScreenActivity.class);
                 startActivity(intent);
             }
