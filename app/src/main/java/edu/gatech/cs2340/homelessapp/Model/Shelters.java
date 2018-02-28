@@ -16,6 +16,7 @@ public class Shelters {
     private static DatabaseReference mDatabase;
 
     public static HashMap<String, HomelessShelter> shelters = new HashMap<>();
+    public static HomelessShelter selectedShelter;
 
     public static void pullShelters() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
