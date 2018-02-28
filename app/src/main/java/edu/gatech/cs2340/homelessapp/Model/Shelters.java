@@ -9,29 +9,23 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 /**
- * Created by Mukund on 2/19/2018.
+ * Created by Amitej Venapally on 2/27/18.
  */
 
-public class Users {
-
+public class Shelters {
     private static DatabaseReference mDatabase;
 
-    public static HashMap<String, HomelessUser> users = new HashMap<>();
+    public static HashMap<String, HomelessShelter> shelters = new HashMap<>();
 
-    public static HashMap<String, HomelessUser> getUsers() {
-        return users;
-    }
-
-
-    public static void pullUsers() {
+    public static void pullShelters() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Users").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Shelters").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> list = dataSnapshot.getChildren();
-                for (DataSnapshot user: list) {
-                    HomelessUser newUser = user.getValue(HomelessUser.class);
-                    users.put(newUser.getUsername(), newUser);
+                for (DataSnapshot shelter: list) {
+                    HomelessShelter newShelter = shelter.getValue(HomelessShelter.class);
+                    shelters.put(newShelter.getName(), newShelter);
                 }
             }
 

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
+import edu.gatech.cs2340.homelessapp.Model.Shelters;
 import edu.gatech.cs2340.homelessapp.R;
 
 
@@ -19,6 +20,7 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+        Shelters.pullShelters();
 
         logoutButton = (Button) findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener((view) -> {
@@ -29,6 +31,7 @@ public class MainScreenActivity extends AppCompatActivity {
         shelterButton = (Button) findViewById(R.id.shelterButton);
         shelterButton.setOnClickListener((view -> {
             Intent newIntent = new Intent (MainScreenActivity.this, ShelterViewActivity.class);
+            Shelters.pullShelters();
             startActivity(newIntent);
         }));
     }
