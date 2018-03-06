@@ -35,4 +35,10 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent intent = new Intent(WelcomeActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent newIntent = new Intent(WelcomeActivity.this, WelcomeActivity.class);
+        startActivity(newIntent);
+    }
 }

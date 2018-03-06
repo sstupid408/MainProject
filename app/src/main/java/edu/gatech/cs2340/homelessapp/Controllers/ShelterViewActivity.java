@@ -21,6 +21,7 @@ public class ShelterViewActivity extends AppCompatActivity {
 
     private ArrayList<String> list = new ArrayList<>();
     private Button filter;
+    private Button clear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,13 @@ public class ShelterViewActivity extends AppCompatActivity {
         filter.setOnClickListener(view -> {
             Intent newIntent = new Intent (ShelterViewActivity.this, FilterActivity.class);
             startActivity(newIntent);
+        });
+
+        clear = (Button) findViewById(R.id.clearButton);
+        clear.setOnClickListener(view -> {
+            Shelters.pullShelters();
+            Intent intent = new Intent (ShelterViewActivity.this, ShelterViewActivity.class);
+            startActivity(intent);
         });
     }
 
