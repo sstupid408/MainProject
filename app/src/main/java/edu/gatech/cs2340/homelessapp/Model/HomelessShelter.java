@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.homelessapp.Model;
 
+import java.util.ArrayList;
+
 /**
  * Created by Joshua on 2/27/2018.
  */
@@ -13,6 +15,9 @@ public class HomelessShelter {
     private String address;
     private String phoneNumber;
     private String specialNotes;
+    private String gender;
+    private ArrayList<String> ageRange;
+
 
 
 
@@ -21,7 +26,8 @@ public class HomelessShelter {
     }
 
     public HomelessShelter(String name, String capacity, String restrictions, String longitude,
-                           String latitude, String address, String phoneNumber, String specialNotes) {
+                           String latitude, String address, String phoneNumber, String specialNotes,
+                           String gender, ArrayList<String> ageRange) {
         this.name = name;
         this.capacity = capacity;
         this.restrictions = restrictions;
@@ -30,6 +36,8 @@ public class HomelessShelter {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.specialNotes = specialNotes;
+        this.gender = gender;
+        this.ageRange = ageRange;
     }
 
     public String getName() {
@@ -60,5 +68,13 @@ public class HomelessShelter {
 
     public String getSpecialNotes() {
         return specialNotes;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public ArrayList<String> getAgeRange() {
+        return ageRange;
     }
 }
