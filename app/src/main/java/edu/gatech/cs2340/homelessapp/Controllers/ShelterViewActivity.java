@@ -32,6 +32,7 @@ public class ShelterViewActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        list.clear();
         for (String shelterName: Shelters.shelters.keySet()) {
             list.add(shelterName);
         }
