@@ -19,12 +19,16 @@ public class ShelterViewActivity extends AppCompatActivity {
 
     private ArrayList<String> list = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter_view);
+    }
 
-        Shelters.pullShelters();
+    @Override
+    protected void onStart() {
+        super.onStart();
         for (String shelterName: Shelters.shelters.keySet()) {
             list.add(shelterName);
         }
@@ -43,4 +47,5 @@ public class ShelterViewActivity extends AppCompatActivity {
             }
         });
     }
+
 }
