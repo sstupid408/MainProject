@@ -84,7 +84,7 @@ public class FilterActivity extends AppCompatActivity {
             Shelters.shelters.put(newShelter.getName(), newShelter);
         }
 
-        if (name != "") {
+        if (!name.equals("")) {
             if (Shelters.shelters.containsKey(name)) {
                 HomelessShelter currentShelter = Shelters.shelters.get(name);
                 Shelters.shelters.clear();
