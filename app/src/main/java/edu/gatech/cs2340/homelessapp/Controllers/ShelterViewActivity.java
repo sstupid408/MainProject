@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
 import edu.gatech.cs2340.homelessapp.Model.Shelters;
@@ -18,7 +20,7 @@ import edu.gatech.cs2340.homelessapp.R;
 public class ShelterViewActivity extends AppCompatActivity {
 
     private ArrayList<String> list = new ArrayList<>();
-
+    private Button filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +29,8 @@ public class ShelterViewActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         for (String shelterName: Shelters.shelters.keySet()) {
             list.add(shelterName);
         }
@@ -46,6 +48,20 @@ public class ShelterViewActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        filter = (Button) findViewById(R.id.filterButton);
+        filter.setOnClickListener(view -> {
+            Intent newIntent = new Intent (ShelterViewActivity.this, FilterActivity.class);
+            startActivity(newIntent);
+        });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent newIntent = new Intent(ShelterViewActivity.this, MainScreenActivity.class);
+        startActivity(newIntent);
+    }
+
+
 
 }

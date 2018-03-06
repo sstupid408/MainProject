@@ -27,7 +27,8 @@
         <activity android:name=".Controllers.MainScreenActivity" />
         <activity android:name=".Controllers.RegisterActivity" />
         <activity android:name=".Controllers.ShelterViewActivity" />
-        <activity android:name=".Controllers.ShelterInfoActivity"></activity>
+        <activity android:name=".Controllers.ShelterInfoActivity" />
+        <activity android:name=".Controllers.FilterActivity"></activity>
     </application>
 
 </manifest>
