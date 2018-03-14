@@ -29,6 +29,7 @@ public class Shelters {
                 for (DataSnapshot shelter: list) {
                     HomelessShelter newShelter = shelter.getValue(HomelessShelter.class);
                     shelters.put(newShelter.getName(), newShelter);
+                    newShelter.setIntOfCurrentCapacity(Integer.parseInt(newShelter.getCurrentCapacity()));
                 }
             }
 

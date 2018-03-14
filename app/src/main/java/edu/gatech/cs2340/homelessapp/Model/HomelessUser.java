@@ -8,6 +8,8 @@ public class HomelessUser {
     private String username;
     private String password;
     private String type;
+    private HomelessShelter currentShelter;
+    private int numberSpotsTaken;
 
     public HomelessUser() {
 
@@ -17,6 +19,8 @@ public class HomelessUser {
         this.username = username;
         this.password = password;
         this.type = type;
+        currentShelter = null;
+        numberSpotsTaken = 0;
     }
 
     public String getPassword() {
@@ -28,4 +32,20 @@ public class HomelessUser {
     }
 
     public String getType() { return type; }
+
+    public HomelessShelter getCurrentShelter() {
+        return currentShelter;
+    }
+
+    public void setCurrentShelter(HomelessShelter currentShelter) {
+        this.currentShelter = currentShelter;
+    }
+
+    public int getNumberSpotsTaken() {
+        return numberSpotsTaken;
+    }
+
+    public void setNumberSpotsTaken(int numberSpotsTaken) {
+        this.numberSpotsTaken = numberSpotsTaken;
+    }
 }

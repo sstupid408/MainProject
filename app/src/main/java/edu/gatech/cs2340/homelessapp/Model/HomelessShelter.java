@@ -17,7 +17,8 @@ public class HomelessShelter {
     private String specialNotes;
     private String gender;
     private ArrayList<String> ageRange;
-
+    private String currentCapacity;
+    private int intOfCurrentCapacity;
 
 
 
@@ -27,7 +28,8 @@ public class HomelessShelter {
 
     public HomelessShelter(String name, String capacity, String restrictions, String longitude,
                            String latitude, String address, String phoneNumber, String specialNotes,
-                           String gender, ArrayList<String> ageRange) {
+                           String gender, ArrayList<String> ageRange, String currentCapacity,
+                           int intOfCurrentCapacity) {
         this.name = name;
         this.capacity = capacity;
         this.restrictions = restrictions;
@@ -38,6 +40,8 @@ public class HomelessShelter {
         this.specialNotes = specialNotes;
         this.gender = gender;
         this.ageRange = ageRange;
+        this.currentCapacity = currentCapacity;
+        this.intOfCurrentCapacity = intOfCurrentCapacity;
     }
 
     public String getName() {
@@ -76,5 +80,17 @@ public class HomelessShelter {
 
     public ArrayList<String> getAgeRange() {
         return ageRange;
+    }
+
+    public String getCurrentCapacity() {
+        return currentCapacity;
+    }
+
+    public int getIntOfCurrentCapacity() {
+        return intOfCurrentCapacity;
+    }
+
+    public void setIntOfCurrentCapacity(int intOfCurrentCapacity) {
+        this.intOfCurrentCapacity = intOfCurrentCapacity;
     }
 }
