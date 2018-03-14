@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
 import edu.gatech.cs2340.homelessapp.Model.Shelters;
 import edu.gatech.cs2340.homelessapp.Model.Users;
@@ -20,6 +23,7 @@ public class MainScreenActivity extends AppCompatActivity {
 
     private Button shelterButton;
     private Button clearReservationButton;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +44,24 @@ public class MainScreenActivity extends AppCompatActivity {
             startActivity(newIntent);
         }));
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         clearReservationButton = (Button) findViewById(R.id.clearReservation);
         clearReservationButton.setOnClickListener(view -> {
             if (Users.currentUser.getCurrentShelterName() != null
-                    && !Users.currentUser.getCurrentShelterName().equals("")) {
+                    && !Users.currentUser.getCurrentShelterName().equals("") ) {
                 HomelessShelter currentShelter = Shelters.shelters.get(Users.currentUser.getCurrentShelterName());
-                currentShelter.updateCapacity(Users.currentUser.getNumberSpotsTaken());
+                if (Shelters.shelters.get(Users.currentUser.getCurrentShelterName()).getCapacity() != null
+                        && !Shelters.shelters.get(Users.currentUser.getCurrentShelterName()).getCapacity().equals("")) {
+                    currentShelter.updateCapacity(Users.currentUser.getNumberSpotsTaken());
+                }
                 Users.currentUser.setNumberSpotsTaken(0);
-                Users.currentUser.setCurrentShelterName(null);
+                Users.currentUser.setCurrentShelterName("");
                 Context context = getApplicationContext();
                 CharSequence text = "Reservation successfully cleared!";
                 Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
                 toast.show();
+                mDatabase.child("Users").child(Users.currentUser.getUsername()).setValue(Users.currentUser);
             }
         });
     }
