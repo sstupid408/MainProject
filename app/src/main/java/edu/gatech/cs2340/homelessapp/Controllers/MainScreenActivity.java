@@ -1,11 +1,15 @@
 package edu.gatech.cs2340.homelessapp.Controllers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
+import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
 import edu.gatech.cs2340.homelessapp.Model.Shelters;
+import edu.gatech.cs2340.homelessapp.Model.Users;
 import edu.gatech.cs2340.homelessapp.R;
 
 
@@ -15,6 +19,7 @@ public class MainScreenActivity extends AppCompatActivity {
     private Button logoutButton;
 
     private Button shelterButton;
+    private Button clearReservationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +39,20 @@ public class MainScreenActivity extends AppCompatActivity {
             Shelters.pullShelters();
             startActivity(newIntent);
         }));
+
+        clearReservationButton = (Button) findViewById(R.id.clearReservation);
+        clearReservationButton.setOnClickListener(view -> {
+            if (Users.currentUser.getCurrentShelterName() != null
+                    && !Users.currentUser.getCurrentShelterName().equals("")) {
+                HomelessShelter currentShelter = Shelters.shelters.get(Users.currentUser.getCurrentShelterName());
+                currentShelter.updateCapacity(Users.currentUser.getNumberSpotsTaken());
+                Users.currentUser.setNumberSpotsTaken(0);
+                Users.currentUser.setCurrentShelterName(null);
+                Context context = getApplicationContext();
+                CharSequence text = "Reservation successfully cleared!";
+                Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
     }
 }

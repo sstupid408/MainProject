@@ -17,6 +17,7 @@ public class Users {
     private static DatabaseReference mDatabase;
 
     public static HashMap<String, HomelessUser> users = new HashMap<>();
+    public static HomelessUser currentUser;
 
     public static HashMap<String, HomelessUser> getUsers() {
         return users;

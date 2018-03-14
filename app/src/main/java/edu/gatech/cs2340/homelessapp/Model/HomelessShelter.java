@@ -1,5 +1,10 @@
 package edu.gatech.cs2340.homelessapp.Model;
 
+import android.util.Log;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 /**
@@ -19,7 +24,7 @@ public class HomelessShelter {
     private ArrayList<String> ageRange;
     private String currentCapacity;
     private int intOfCurrentCapacity;
-
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
     public HomelessShelter() {
@@ -92,5 +97,12 @@ public class HomelessShelter {
 
     public void setIntOfCurrentCapacity(int intOfCurrentCapacity) {
         this.intOfCurrentCapacity = intOfCurrentCapacity;
+    }
+
+    public void updateCapacity(int intOfCurrentCapacity) {
+        this.intOfCurrentCapacity += intOfCurrentCapacity;
+        this.currentCapacity = "" + this.intOfCurrentCapacity;
+        mDatabase.child("Shelters").child(this.getName()).setValue(this);
+
     }
 }
