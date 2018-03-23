@@ -72,6 +72,11 @@ public class ShelterViewActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent newIntent = new Intent (ShelterViewActivity.this, MainScreenActivity.class);
+        startActivity(newIntent);
+    }
 
 
 

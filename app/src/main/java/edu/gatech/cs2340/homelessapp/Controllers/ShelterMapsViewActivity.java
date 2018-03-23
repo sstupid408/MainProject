@@ -72,7 +72,7 @@ public class ShelterMapsViewActivity extends FragmentActivity implements OnMapRe
             }
 
             for (HomelessShelter shelter : shelters) {
-                mMap.addMarker(new MarkerOptions().position(getLocation(shelter.getLatitude(),shelter.getLongitude())).title(shelter.getName()));
+                mMap.addMarker(new MarkerOptions().position(getLocation(shelter.getLatitude(),shelter.getLongitude())).title(shelter.getName() + " | " + "Phone: " + shelter.getPhoneNumber()));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getLocation(shelters.get(0).getLatitude(),shelters.get(0).getLongitude()),11));
 
@@ -101,7 +101,7 @@ public class ShelterMapsViewActivity extends FragmentActivity implements OnMapRe
         }
 
         for (HomelessShelter shelter : shelters) {
-            mMap.addMarker(new MarkerOptions().position(getLocation(shelter.getLatitude(),shelter.getLongitude())).title(shelter.getName()));
+            mMap.addMarker(new MarkerOptions().position(getLocation(shelter.getLatitude(),shelter.getLongitude())).title(shelter.getName() + " | " + "Phone: " + shelter.getPhoneNumber()));
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getLocation(shelters.get(0).getLatitude(),shelters.get(0).getLongitude()),11));
 //        LatLng sydney = new LatLng(-34, 151);
@@ -114,6 +114,12 @@ public class ShelterMapsViewActivity extends FragmentActivity implements OnMapRe
     public LatLng getLocation(String latitude, String longitude) {
         return new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent newIntent = new Intent (ShelterMapsViewActivity.this, MainScreenActivity.class);
+        startActivity(newIntent);
     }
 
 }
