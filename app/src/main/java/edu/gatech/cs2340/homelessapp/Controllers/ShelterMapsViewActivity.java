@@ -63,10 +63,18 @@ public class ShelterMapsViewActivity extends FragmentActivity implements OnMapRe
         super.onResume();
         if (mMap != null) {
             mMap.clear();
-            // Add a marker in Sydney and move the camera
-            LatLng sydney = new LatLng(-34, 151);
-            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+
+            List<HomelessShelter> shelters = new ArrayList<HomelessShelter>();
+            for (String shelter : Shelters.shelters.keySet()) {
+                shelters.add(Shelters.shelters.get(shelter));
+
+            }
+
+            for (HomelessShelter shelter : shelters) {
+                mMap.addMarker(new MarkerOptions().position(getLocation(shelter.getLatitude(),shelter.getLongitude())).title(shelter.getName()));
+            }
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getLocation(shelters.get(0).getLatitude(),shelters.get(0).getLongitude()),11));
 
         }
 
