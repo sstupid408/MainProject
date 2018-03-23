@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HomelessApp.iml" filepath="$PROJECT_DIR$/HomelessApp.iml" />
       <module fileurl="file://C:\Users\Mukund\Desktop\Mukund\5th semester\CS 2340\HomelessApp\MainProject\HomelessApp.iml" filepath="C:\Users\Mukund\Desktop\Mukund\5th semester\CS 2340\HomelessApp\MainProject\HomelessApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/MainProject.iml" filepath="$PROJECT_DIR$/MainProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

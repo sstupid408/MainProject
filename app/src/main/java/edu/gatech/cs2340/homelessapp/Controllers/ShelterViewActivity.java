@@ -22,6 +22,7 @@ public class ShelterViewActivity extends AppCompatActivity {
     private ArrayList<String> list = new ArrayList<>();
     private Button filter;
     private Button clear;
+    private Button mapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,12 @@ public class ShelterViewActivity extends AppCompatActivity {
             Shelters.pullShelters();
             Intent intent = new Intent (ShelterViewActivity.this, ShelterViewActivity.class);
             startActivity(intent);
+        });
+
+        mapView = (Button) findViewById(R.id.mapViewButton);
+        mapView.setOnClickListener(view -> {
+            Intent newIntent = new Intent (ShelterViewActivity.this, ShelterMapsViewActivity.class);
+            startActivity(newIntent);
         });
     }
 
