@@ -55,10 +55,11 @@
         android:text="Clear Filter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.028"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sheltersView"
         app:layout_constraintVertical_bias="0.529" />
+
 
     <Button
         android:id="@+id/listViewButton"
@@ -71,10 +72,10 @@
         android:text="List View"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.614"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.985" />
+        app:layout_constraintTop_toBottomOf="@+id/sheltersView"
+        app:layout_constraintVertical_bias="0.529" />
 
     <Button
         android:id="@+id/mapViewButton"
@@ -89,6 +90,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.985" />
+        app:layout_constraintTop_toBottomOf="@+id/sheltersView" />
 </android.support.constraint.ConstraintLayout>

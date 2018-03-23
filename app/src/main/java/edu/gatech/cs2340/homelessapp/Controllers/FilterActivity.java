@@ -58,8 +58,9 @@ public class FilterActivity extends AppCompatActivity {
         accept = (Button) findViewById(R.id.acceptButton);
         accept.setOnClickListener(view -> {
             filter();
-            Intent newIntent = new Intent (FilterActivity.this, ShelterViewActivity.class);
-            startActivity(newIntent);
+            onBackPressed();
+//            Intent newIntent = new Intent (FilterActivity.this, ShelterViewActivity.class);
+//            startActivity(newIntent);
         });
     }
 

@@ -1,7 +1,11 @@
 package edu.gatech.cs2340.homelessapp.Controllers;
 
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,12 +14,21 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
+import edu.gatech.cs2340.homelessapp.Model.Shelters;
 import edu.gatech.cs2340.homelessapp.R;
 
 public class ShelterMapsViewActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
+    private Button listView;
+    private Button filter;
+    private Button clear;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +37,39 @@ public class ShelterMapsViewActivity extends FragmentActivity implements OnMapRe
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        filter = (Button) findViewById(R.id.filterButton);
+        filter.setOnClickListener(view -> {
+            Intent newIntent = new Intent (ShelterMapsViewActivity.this, FilterActivity.class);
+            startActivity(newIntent);
+        });
+
+        clear = (Button) findViewById(R.id.clearButton);
+        clear.setOnClickListener(view -> {
+            Shelters.pullShelters();
+            Intent intent = new Intent (ShelterMapsViewActivity.this, ShelterMapsViewActivity.class);
+            startActivity(intent);
+        });
+
+        listView = (Button) findViewById(R.id.listViewButton);
+        listView.setOnClickListener(view -> {
+            Intent newIntent = new Intent (ShelterMapsViewActivity.this, ShelterViewActivity.class);
+            startActivity(newIntent);
+        });
+    }
+
+
+    public void onResume() {
+        super.onResume();
+        if (mMap != null) {
+            mMap.clear();
+            // Add a marker in Sydney and move the camera
+            LatLng sydney = new LatLng(-34, 151);
+            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        }
+
     }
 
 
@@ -40,9 +86,27 @@ public class ShelterMapsViewActivity extends FragmentActivity implements OnMapRe
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        List<HomelessShelter> shelters = new ArrayList<HomelessShelter>();
+        for (String shelter : Shelters.shelters.keySet()) {
+            shelters.add(Shelters.shelters.get(shelter));
+
+        }
+
+        for (HomelessShelter shelter : shelters) {
+            mMap.addMarker(new MarkerOptions().position(getLocation(shelter.getLatitude(),shelter.getLongitude())).title(shelter.getName()));
+        }
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getLocation(shelters.get(0).getLatitude(),shelters.get(0).getLongitude()),11));
+//        LatLng sydney = new LatLng(-34, 151);
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
+
+
+    public LatLng getLocation(String latitude, String longitude) {
+        return new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+
+    }
+
 }
+
