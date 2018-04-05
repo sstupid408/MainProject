@@ -27,8 +27,8 @@ public class FilterActivity extends AppCompatActivity {
     private String age;
     private String name;
 
-    List<HomelessShelter> shelters;
-    List<HomelessShelter> allShelters;
+    private List<HomelessShelter> shelters;
+    private List<HomelessShelter> allShelters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
