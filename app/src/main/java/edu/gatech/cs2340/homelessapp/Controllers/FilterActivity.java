@@ -1,16 +1,13 @@
 package edu.gatech.cs2340.homelessapp.Controllers;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
@@ -22,11 +19,7 @@ public class FilterActivity extends AppCompatActivity {
     private Spinner selectedGender;
     private Spinner selectedAge;
     private EditText selectedName;
-    private String gender;
-    private String age;
 
-    private List<HomelessShelter> shelters;
-    private List<HomelessShelter> allShelters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,27 +51,27 @@ public class FilterActivity extends AppCompatActivity {
 
         accept = findViewById(R.id.acceptButton);
         accept.setOnClickListener(view -> {
-            filter();
+            filter(new ArrayList<>(), new ArrayList<>());
             onBackPressed();
 //            Intent newIntent = new Intent (FilterActivity.this, ShelterViewActivity.class);
 //            startActivity(newIntent);
         });
     }
 
-    private void filter() {
+    private void filter(List<HomelessShelter> shelters, List<HomelessShelter> allShelters) {
         String name;
+        String gender;
+        String age;
         gender = (String) selectedGender.getSelectedItem();
         age = (String) selectedAge.getSelectedItem();
         name = selectedName.getText().toString();
 
-        shelters = new ArrayList<>();
-        allShelters = new ArrayList<>();
         for (String currentShelter: Shelters.shelters.keySet()) {
             allShelters.add(Shelters.shelters.get(currentShelter));
         }
 
-        filterGender();
-        filterAge();
+        allShelters = filterGender(shelters, allShelters, gender);
+        shelters = filterAge(shelters, allShelters, age);
 
         Shelters.shelters.clear();
         for (HomelessShelter newShelter : shelters) {
@@ -94,11 +87,9 @@ public class FilterActivity extends AppCompatActivity {
                 Shelters.shelters.clear();
             }
         }
-
-
-
     }
-    private void filterGender() {
+    private List<HomelessShelter> filterGender(List<HomelessShelter> shelters,
+                                               List<HomelessShelter> allShelters, String gender) {
         if (!"".equals(gender)) {
             for (HomelessShelter genderShelter : allShelters) {
                 if(genderShelter.getGender().equals(gender)) {
@@ -109,8 +100,10 @@ public class FilterActivity extends AppCompatActivity {
             allShelters.addAll(shelters);
             shelters.clear();
         }
+        return allShelters;
     }
-    private void filterAge() {
+    private List<HomelessShelter> filterAge(List<HomelessShelter> shelters,
+                                            List<HomelessShelter> allShelters, String age) {
         if (!"".equals(age)) {
             shelters.clear();
             for (HomelessShelter ageShelter : allShelters) {
@@ -121,6 +114,7 @@ public class FilterActivity extends AppCompatActivity {
         } else {
             shelters.addAll(allShelters);
         }
+        return shelters;
     }
 
 }
