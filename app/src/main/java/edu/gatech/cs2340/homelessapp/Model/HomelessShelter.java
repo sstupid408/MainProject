@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Joshua on 2/27/2018.
@@ -21,10 +22,10 @@ public class HomelessShelter {
     private String phoneNumber;
     private String specialNotes;
     private String gender;
-    private ArrayList<String> ageRange;
+    private List<String> ageRange;
     private String currentCapacity;
     private int intOfCurrentCapacity;
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    private final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
     public HomelessShelter() {
@@ -44,7 +45,7 @@ public class HomelessShelter {
         this.phoneNumber = phoneNumber;
         this.specialNotes = specialNotes;
         this.gender = gender;
-        this.ageRange = ageRange;
+        this.ageRange = new ArrayList<>(ageRange);
         this.currentCapacity = currentCapacity;
         this.intOfCurrentCapacity = intOfCurrentCapacity;
     }
@@ -55,7 +56,7 @@ public class HomelessShelter {
 
     public String getCapacity() { return capacity; }
 
-    public String getRestrictions() {
+    public CharSequence getRestrictions() {
         return restrictions;
     }
 
@@ -67,15 +68,15 @@ public class HomelessShelter {
         return latitude;
     }
 
-    public String getAddress() {
+    public CharSequence getAddress() {
         return address;
     }
 
-    public String getPhoneNumber() {
+    public CharSequence getPhoneNumber() {
         return phoneNumber;
     }
 
-    public String getSpecialNotes() {
+    public CharSequence getSpecialNotes() {
         return specialNotes;
     }
 
@@ -83,7 +84,7 @@ public class HomelessShelter {
         return gender;
     }
 
-    public ArrayList<String> getAgeRange() {
+    public List<String> getAgeRange() {
         return ageRange;
     }
 

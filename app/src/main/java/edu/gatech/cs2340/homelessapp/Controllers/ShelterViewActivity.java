@@ -19,10 +19,7 @@ import edu.gatech.cs2340.homelessapp.R;
 
 public class ShelterViewActivity extends AppCompatActivity {
 
-    private ArrayList<String> list = new ArrayList<>();
-    private Button filter;
-    private Button clear;
-    private Button mapView;
+    private final ArrayList<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,38 +31,37 @@ public class ShelterViewActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         list.clear();
-        for (String shelterName: Shelters.shelters.keySet()) {
-            list.add(shelterName);
-        }
+        list.addAll(Shelters.shelters.keySet());
         String[] listAsArray = new String[list.size()];
         listAsArray = list.toArray(listAsArray);
-        ListView lv = (ListView) findViewById(R.id.sheltersView);
-        lv.setAdapter(new ArrayAdapter<String>(ShelterViewActivity.this,
+        ListView lv = findViewById(R.id.sheltersView);
+        lv.setAdapter(new ArrayAdapter<>(ShelterViewActivity.this,
                 android.R.layout.simple_list_item_1, listAsArray));
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String shelterName = ((TextView)view).getText().toString();
-                Shelters.selectedShelter = Shelters.shelters.get(shelterName);
-                Intent intent = new Intent(ShelterViewActivity.this, ShelterInfoActivity.class);
-                startActivity(intent);
-            }
+        lv.setOnItemClickListener((adapterView, view, i, l) -> {
+            String shelterName = ((TextView)view).getText().toString();
+            Shelters.selectedShelter = Shelters.shelters.get(shelterName);
+            Intent intent = new Intent(ShelterViewActivity.this, ShelterInfoActivity.class);
+            startActivity(intent);
         });
 
-        filter = (Button) findViewById(R.id.filterButton);
+        Button filter;
+        Button clear;
+        Button mapView;
+
+        filter = findViewById(R.id.filterButton);
         filter.setOnClickListener(view -> {
             Intent newIntent = new Intent (ShelterViewActivity.this, FilterActivity.class);
             startActivity(newIntent);
         });
 
-        clear = (Button) findViewById(R.id.clearButton);
+        clear = findViewById(R.id.clearButton);
         clear.setOnClickListener(view -> {
             Shelters.pullShelters();
             Intent intent = new Intent (ShelterViewActivity.this, ShelterViewActivity.class);
             startActivity(intent);
         });
 
-        mapView = (Button) findViewById(R.id.mapViewButton);
+        mapView = findViewById(R.id.mapViewButton);
         mapView.setOnClickListener(view -> {
             Intent newIntent = new Intent (ShelterViewActivity.this, ShelterMapsViewActivity.class);
             startActivity(newIntent);

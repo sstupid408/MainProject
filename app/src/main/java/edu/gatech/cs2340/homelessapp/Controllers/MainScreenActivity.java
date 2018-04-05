@@ -19,10 +19,6 @@ import edu.gatech.cs2340.homelessapp.R;
 public class MainScreenActivity extends AppCompatActivity {
 
     // buttons
-    private Button logoutButton;
-
-    private Button shelterButton;
-    private Button clearReservationButton;
     private DatabaseReference mDatabase;
 
     @Override
@@ -30,14 +26,16 @@ public class MainScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         Shelters.pullShelters();
-
-        logoutButton = (Button) findViewById(R.id.logoutButton);
+        Button logoutButton;
+        logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener((view) -> {
             Intent newIntent = new Intent(MainScreenActivity.this, WelcomeActivity.class);
             startActivity(newIntent);
         });
 
-        shelterButton = (Button) findViewById(R.id.shelterButton);
+        Button shelterButton;
+        Button clearReservationButton;
+        shelterButton = findViewById(R.id.shelterButton);
         shelterButton.setOnClickListener((view -> {
             Intent newIntent = new Intent (MainScreenActivity.this, ShelterViewActivity.class);
             Shelters.pullShelters();
@@ -46,13 +44,16 @@ public class MainScreenActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        clearReservationButton = (Button) findViewById(R.id.clearReservation);
+        clearReservationButton = findViewById(R.id.clearReservation);
         clearReservationButton.setOnClickListener(view -> {
-            if (Users.currentUser.getCurrentShelterName() != null
-                    && !Users.currentUser.getCurrentShelterName().equals("") ) {
-                HomelessShelter currentShelter = Shelters.shelters.get(Users.currentUser.getCurrentShelterName());
-                if (Shelters.shelters.get(Users.currentUser.getCurrentShelterName()).getCapacity() != null
-                        && !Shelters.shelters.get(Users.currentUser.getCurrentShelterName()).getCapacity().equals("")) {
+            if ((Users.currentUser.getCurrentShelterName() != null)
+                    && !"".equals(Users.currentUser.getCurrentShelterName())) {
+                HomelessShelter currentShelter = Shelters.shelters.get(
+                        Users.currentUser.getCurrentShelterName());
+                if ((Shelters.shelters.get(
+                        Users.currentUser.getCurrentShelterName()).getCapacity() != null)
+                        && !"".equals(Shelters.shelters.get(
+                        Users.currentUser.getCurrentShelterName()).getCapacity())) {
                     currentShelter.updateCapacity(Users.currentUser.getNumberSpotsTaken());
                 }
                 Users.currentUser.setNumberSpotsTaken(0);
@@ -61,7 +62,8 @@ public class MainScreenActivity extends AppCompatActivity {
                 CharSequence text = "Reservation successfully cleared!";
                 Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
                 toast.show();
-                mDatabase.child("Users").child(Users.currentUser.getUsername()).setValue(Users.currentUser);
+                mDatabase.child("Users").child(
+                        Users.currentUser.getUsername()).setValue(Users.currentUser);
             }
         });
     }

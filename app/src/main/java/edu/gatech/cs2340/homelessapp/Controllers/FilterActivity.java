@@ -19,43 +19,44 @@ import edu.gatech.cs2340.homelessapp.R;
 
 public class FilterActivity extends AppCompatActivity {
 
-    private Button accept;
     private Spinner selectedGender;
     private Spinner selectedAge;
     private EditText selectedName;
     private String gender;
     private String age;
-    private String name;
 
     private List<HomelessShelter> shelters;
     private List<HomelessShelter> allShelters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button accept;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
 
         Shelters.pullShelters();
 
-        selectedGender = (Spinner) findViewById(R.id.selectedGender);
-        selectedAge = (Spinner) findViewById(R.id.selectedAge);
-        selectedName = (EditText) findViewById(R.id.selectedName);
+        selectedGender = findViewById(R.id.selectedGender);
+        selectedAge = findViewById(R.id.selectedAge);
+        selectedName = findViewById(R.id.selectedName);
 
         String[] genders = {"Men", "Women", "All", ""};
         String[] ages = {"Children", "Young adults", "Anyone", "Families", ""};
 
-        ArrayAdapter<String> forGender = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genders);
+        ArrayAdapter<String> forGender = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, genders);
         forGender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectedGender.setAdapter(forGender);
 
-        ArrayAdapter<String> forAgeRange = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ages);
+        ArrayAdapter<String> forAgeRange = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, ages);
         forAgeRange.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectedAge.setAdapter(forAgeRange);
 
         selectedGender.setSelection(3);
         selectedAge.setSelection(4);
 
-        accept = (Button) findViewById(R.id.acceptButton);
+        accept = findViewById(R.id.acceptButton);
         accept.setOnClickListener(view -> {
             filter();
             onBackPressed();
@@ -65,8 +66,7 @@ public class FilterActivity extends AppCompatActivity {
     }
 
     private void filter() {
-
-
+        String name;
         gender = (String) selectedGender.getSelectedItem();
         age = (String) selectedAge.getSelectedItem();
         name = selectedName.getText().toString();
@@ -80,12 +80,12 @@ public class FilterActivity extends AppCompatActivity {
         filterGender();
         filterAge();
 
-        Shelters.shelters = new HashMap<>();
+        Shelters.shelters.clear();
         for (HomelessShelter newShelter : shelters) {
             Shelters.shelters.put(newShelter.getName(), newShelter);
         }
 
-        if (!name.equals("")) {
+        if (!"".equals(name)) {
             if (Shelters.shelters.containsKey(name)) {
                 HomelessShelter currentShelter = Shelters.shelters.get(name);
                 Shelters.shelters.clear();
@@ -99,21 +99,19 @@ public class FilterActivity extends AppCompatActivity {
 
     }
     private void filterGender() {
-        if (!gender.equals("")) {
+        if (!"".equals(gender)) {
             for (HomelessShelter genderShelter : allShelters) {
                 if(genderShelter.getGender().equals(gender)) {
                     shelters.add(genderShelter);
                 }
             }
             allShelters.clear();
-            for (HomelessShelter hs: shelters) {
-                allShelters.add(hs);
-            }
+            allShelters.addAll(shelters);
             shelters.clear();
         }
     }
     private void filterAge() {
-        if (!age.equals("") ) {
+        if (!"".equals(age)) {
             shelters.clear();
             for (HomelessShelter ageShelter : allShelters) {
                 if (ageShelter.getAgeRange().contains(age)) {
@@ -121,9 +119,7 @@ public class FilterActivity extends AppCompatActivity {
                 }
             }
         } else {
-            for (HomelessShelter hs : allShelters) {
-                shelters.add(hs);
-            }
+            shelters.addAll(allShelters);
         }
     }
 

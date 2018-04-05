@@ -7,6 +7,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Mukund on 2/19/2018.
@@ -14,17 +15,16 @@ import java.util.HashMap;
 
 public class Users {
 
-    private static DatabaseReference mDatabase;
-
-    public static HashMap<String, HomelessUser> users = new HashMap<>();
+    public static final Map<String, HomelessUser> users = new HashMap<>();
     public static HomelessUser currentUser;
 
-    public static HashMap<String, HomelessUser> getUsers() {
+    public static Map<String, HomelessUser> getUsers() {
         return users;
     }
 
 
     public static void pullUsers() {
+        DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -32,7 +32,9 @@ public class Users {
                 Iterable<DataSnapshot> list = dataSnapshot.getChildren();
                 for (DataSnapshot user: list) {
                     HomelessUser newUser = user.getValue(HomelessUser.class);
-                    users.put(newUser.getUsername(), newUser);
+                    if (newUser != null) {
+                        users.put(newUser.getUsername(), newUser);
+                    }
                 }
             }
 

@@ -9,18 +9,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Amitej Venapally on 2/27/18.
  */
 
 public class Shelters {
-    private static DatabaseReference mDatabase;
 
-    public static HashMap<String, HomelessShelter> shelters = new HashMap<>();
+    public static final Map<String, HomelessShelter> shelters = new HashMap<>();
     public static HomelessShelter selectedShelter;
 
     public static void pullShelters() {
+        DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("Shelters").addValueEventListener(new ValueEventListener() {
             @Override
@@ -28,9 +29,13 @@ public class Shelters {
                 Iterable<DataSnapshot> list = dataSnapshot.getChildren();
                 for (DataSnapshot shelter: list) {
                     HomelessShelter newShelter = shelter.getValue(HomelessShelter.class);
-                    shelters.put(newShelter.getName(), newShelter);
-                    if (newShelter.getCurrentCapacity() != null && !newShelter.getCurrentCapacity().equals("")) {
-                        newShelter.setIntOfCurrentCapacity(Integer.parseInt(newShelter.getCurrentCapacity()));
+                    if (newShelter != null) {
+                        shelters.put(newShelter.getName(), newShelter);
+                        if ((newShelter.getCurrentCapacity() != null)
+                                && !"".equals(newShelter.getCurrentCapacity())) {
+                            newShelter.setIntOfCurrentCapacity(
+                                    Integer.parseInt(newShelter.getCurrentCapacity()));
+                        }
                     }
                 }
             }

@@ -29,12 +29,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        Spinner typeSpinner = (Spinner) findViewById(R.id.typeSpinner);
-        Button registerButton = (Button) findViewById(R.id.registerButton);
-        EditText username = (EditText) findViewById(R.id.username);
-        EditText password = (EditText) findViewById(R.id.password);
+        Spinner typeSpinner = findViewById(R.id.typeSpinner);
+        Button registerButton = findViewById(R.id.registerButton);
+        EditText username = findViewById(R.id.username);
+        EditText password = findViewById(R.id.password);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Arrays.asList("User", "Admin"));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Arrays.asList("User", "Admin"));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter);
 
@@ -47,9 +48,11 @@ public class RegisterActivity extends AppCompatActivity {
             } else if (TextUtils.isEmpty(pass)) {
                 password.setError(getString(R.string.error_field_required));
             } else {
-                HomelessUser newUser = new HomelessUser(user, pass, (String) typeSpinner.getSelectedItem());
+                HomelessUser newUser = new HomelessUser(
+                        user, pass, (String) typeSpinner.getSelectedItem());
                 mDatabase.child("Users").child(user).setValue(newUser);
-                Intent intent = new Intent(RegisterActivity.this, MainScreenActivity.class);
+                Intent intent = new Intent(
+                        RegisterActivity.this, MainScreenActivity.class);
                 startActivity(intent);
             }
 
