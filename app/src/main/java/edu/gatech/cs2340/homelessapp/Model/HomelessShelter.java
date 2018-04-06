@@ -25,7 +25,7 @@ public class HomelessShelter {
     private List<String> ageRange;
     private String currentCapacity;
     private int intOfCurrentCapacity;
-    private final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference mDatabase;
 
 
     public HomelessShelter() {
@@ -101,6 +101,7 @@ public class HomelessShelter {
     }
 
     public void updateCapacity(int intOfCurrentCapacity) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         this.intOfCurrentCapacity += intOfCurrentCapacity;
         this.currentCapacity = "" + this.intOfCurrentCapacity;
         mDatabase.child("Shelters").child(this.getName()).setValue(this);

@@ -88,7 +88,7 @@ public class FilterActivity extends AppCompatActivity {
             }
         }
     }
-    private List<HomelessShelter> filterGender(List<HomelessShelter> shelters,
+    public List<HomelessShelter> filterGender(List<HomelessShelter> shelters,
                                                List<HomelessShelter> allShelters, String gender) {
         if (!"".equals(gender)) {
             for (HomelessShelter genderShelter : allShelters) {
@@ -102,7 +102,7 @@ public class FilterActivity extends AppCompatActivity {
         }
         return allShelters;
     }
-    private List<HomelessShelter> filterAge(List<HomelessShelter> shelters,
+    public List<HomelessShelter> filterAge(List<HomelessShelter> shelters,
                                             List<HomelessShelter> allShelters, String age) {
         if (!"".equals(age)) {
             shelters.clear();
