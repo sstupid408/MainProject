@@ -13,8 +13,8 @@ import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
 import static org.junit.Assert.*;
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
+ * A Unit Test for Filter Gender Tests
+ * Test Created by Mukund Pandiri
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class FilterGenderTests {
