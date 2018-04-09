@@ -2,15 +2,10 @@ package edu.gatech.cs2340.homelessapp;
 
 import edu.gatech.cs2340.homelessapp.Controllers.FilterActivity;
 import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
-import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import edu.gatech.cs2340.homelessapp.Controllers.FilterActivity;
-import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
 import edu.gatech.cs2340.homelessapp.Model.Shelters;
 
 import static org.junit.Assert.assertEquals;
