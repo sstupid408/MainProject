@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-
 import edu.gatech.cs2340.homelessapp.Model.*;
 import edu.gatech.cs2340.homelessapp.R;
 
+/**
+ * A screen to welcome the user to the app
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override

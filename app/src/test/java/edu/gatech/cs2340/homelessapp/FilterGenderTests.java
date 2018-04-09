@@ -18,23 +18,23 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class FilterGenderTests {
-    FilterActivity sampleActivity = new FilterActivity();
+    private final FilterActivity sampleActivity = new FilterActivity();
 
-    String[] age = {"dhfhdfhahf"};
+    private final String[] age = {"dhfhdfhahf"};
 
     //first test where we filter by male
-    List shelters = new ArrayList<HomelessShelter>();
-    List allShelters = new ArrayList<HomelessShelter>();
-    HomelessShelter shelter1 = new HomelessShelter("shelter1", "10", "", "200",
+    private final List shelters = new ArrayList<HomelessShelter>();
+    private final List allShelters = new ArrayList<HomelessShelter>();
+    private final HomelessShelter shelter1 = new HomelessShelter("shelter1", "10", "", "200",
             "100", "address", "0000000000", "",
             "Men", new ArrayList(Arrays.asList(age)), "10", 10);
-    HomelessShelter shelter2 = new HomelessShelter("shelter1", "10", "", "200",
+    private final HomelessShelter shelter2 = new HomelessShelter("shelter1", "10", "", "200",
             "100", "address", "0000000000", "",
             "Women", new ArrayList(Arrays.asList(age)), "10", 10);
-    HomelessShelter shelter3 = new HomelessShelter("shelter1", "10", "", "200",
+    private final HomelessShelter shelter3 = new HomelessShelter("shelter1", "10", "", "200",
             "100", "address", "0000000000", "",
             "All", new ArrayList(Arrays.asList(age)), "10", 10);
-    HomelessShelter shelter4 = new HomelessShelter("shelter1", "10", "", "200",
+    private final HomelessShelter shelter4 = new HomelessShelter("shelter1", "10", "", "200",
             "100", "address", "0000000000", "",
             "", new ArrayList(Arrays.asList(age)), "10", 10);
 

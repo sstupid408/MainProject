@@ -1,8 +1,6 @@
 package edu.gatech.cs2340.homelessapp.Controllers;
 
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -14,7 +12,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +19,9 @@ import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
 import edu.gatech.cs2340.homelessapp.Model.Shelters;
 import edu.gatech.cs2340.homelessapp.R;
 
+/**
+ * A screen to view a map of the shelters
+ */
 public class ShelterMapsViewActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;

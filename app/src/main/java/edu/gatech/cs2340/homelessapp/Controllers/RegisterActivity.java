@@ -18,6 +18,9 @@ import edu.gatech.cs2340.homelessapp.R;
 
 import edu.gatech.cs2340.homelessapp.Model.*;
 
+/**
+ * A registration screen for users to create accounts
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;

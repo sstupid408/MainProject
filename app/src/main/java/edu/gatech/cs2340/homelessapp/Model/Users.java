@@ -10,19 +10,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Mukund on 2/19/2018.
+ * A representation of all users
  */
 
 public class Users {
 
-    public static final Map<String, HomelessUser> users = new HashMap<>();
+    private static final Map<String, HomelessUser> users = new HashMap<>();
     public static HomelessUser currentUser;
 
+    /**
+     * Getter method for users
+     *
+     * @return map of users
+     */
     public static Map<String, HomelessUser> getUsers() {
         return users;
     }
 
-
+    /**
+     * Pulls user data from Firebase database
+     */
     public static void pullUsers() {
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();

@@ -15,7 +15,9 @@ import edu.gatech.cs2340.homelessapp.Model.Shelters;
 import edu.gatech.cs2340.homelessapp.Model.Users;
 import edu.gatech.cs2340.homelessapp.R;
 
-
+/**
+ * A main screen for the homeless shelter app
+ */
 public class MainScreenActivity extends AppCompatActivity {
 
     // buttons

@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.homelessapp;
 
-import android.util.Log;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,39 +18,39 @@ import static org.junit.Assert.assertEquals;
 
 public class FilterAgeTest {
 
-    private FilterActivity filterActivity = new FilterActivity();
-    private String[] age1 = {"Anyone"};
-    private String[] age2 = {"Children"};
-    private String[] age3 = {"Families"};
-    private String[] age4 = {"Young adults"};
-    private String[] age5 = {""};
-    private String[] age6 = {"Children", "Families"};
-    private HomelessShelter shelter1 = new HomelessShelter("Shelter 1", "23", "none",
+    private final FilterActivity filterActivity = new FilterActivity();
+    private final String[] age1 = {"Anyone"};
+    private final String[] age2 = {"Children"};
+    private final String[] age3 = {"Families"};
+    private final String[] age4 = {"Young adults"};
+    private final String[] age5 = {""};
+    private final String[] age6 = {"Children", "Families"};
+    private final HomelessShelter shelter1 = new HomelessShelter("Shelter 1", "23", "none",
             "123.2331", "231.2312", "213 ensc sdss", "404-232-2342",
             "N/A", "Male", new ArrayList<>(Arrays.asList(age1)),
             "23", 23);
-    private HomelessShelter shelter2 = new HomelessShelter("Shelter 2", "23", "none",
+    private final HomelessShelter shelter2 = new HomelessShelter("Shelter 2", "23", "none",
             "123.2331", "231.2312", "213 ensc sdss", "404-232-2342",
             "N/A", "Male", new ArrayList<>(Arrays.asList(age2)),
             "23", 23);
-    private HomelessShelter shelter3 = new HomelessShelter("Shelter 3", "23", "none",
+    private final HomelessShelter shelter3 = new HomelessShelter("Shelter 3", "23", "none",
             "123.2331", "231.2312", "213 ensc sdss", "404-232-2342",
-            "N/A", "Male", new ArrayList<String>(Arrays.asList(age3)),
+            "N/A", "Male", new ArrayList<>(Arrays.asList(age3)),
             "23", 23);
-    private HomelessShelter shelter4 = new HomelessShelter("Shelter 4", "23", "none",
+    private final HomelessShelter shelter4 = new HomelessShelter("Shelter 4", "23", "none",
             "123.2331", "231.2312", "213 ensc sdss", "404-232-2342",
-            "N/A", "Male", new ArrayList<String>(Arrays.asList(age4)),
+            "N/A", "Male", new ArrayList<>(Arrays.asList(age4)),
             "23", 23);
-    private HomelessShelter shelter5 = new HomelessShelter("Shelter 5", "23", "none",
+    private final HomelessShelter shelter5 = new HomelessShelter("Shelter 5", "23", "none",
             "123.2331", "231.2312", "213 ensc sdss", "404-232-2342",
-            "N/A", "Male", new ArrayList<String>(Arrays.asList(age5)),
+            "N/A", "Male", new ArrayList<>(Arrays.asList(age5)),
             "23", 23);
-    private HomelessShelter shelter6 = new HomelessShelter("Shelter 6", "23", "none",
+    private final HomelessShelter shelter6 = new HomelessShelter("Shelter 6", "23", "none",
             "123.2331", "231.2312", "213 ensc sdss", "404-232-2342",
-            "N/A", "Male", new ArrayList<String>(Arrays.asList(age6)),
+            "N/A", "Male", new ArrayList<>(Arrays.asList(age6)),
             "23", 23);
     private List<HomelessShelter> shelters = new ArrayList<>();
-    private List<HomelessShelter> allShelters = new ArrayList<>();
+    private final List<HomelessShelter> allShelters = new ArrayList<>();
 
     @Before
     public void setUp() {

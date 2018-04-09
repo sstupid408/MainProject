@@ -1,8 +1,6 @@
 package edu.gatech.cs2340.homelessapp.Controllers;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.TestLooperManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -17,6 +15,9 @@ import edu.gatech.cs2340.homelessapp.Model.Shelters;
 import edu.gatech.cs2340.homelessapp.Model.Users;
 import edu.gatech.cs2340.homelessapp.R;
 
+/**
+ * A screen to display information about shelters
+ */
 public class ShelterInfoActivity extends AppCompatActivity {
 
     private TextView capacity;
@@ -44,7 +45,7 @@ public class ShelterInfoActivity extends AppCompatActivity {
         TextView gender;
         TextView ageRange;
         Button reserve;
-        String genderToDisp = "";
+        String genderToDisp;
 
         name = findViewById(R.id.name);
         capacity = findViewById(R.id.capacity);
@@ -60,9 +61,11 @@ public class ShelterInfoActivity extends AppCompatActivity {
         reserve = findViewById(R.id.reserve);
 
         if (Shelters.selectedShelter.getAgeRange() != null) {
+            StringBuilder range = new StringBuilder(ageRangeToDisp);
             for (String s : Shelters.selectedShelter.getAgeRange()) {
-                ageRangeToDisp += s + " ";
+                range.append(s).append(" ");
             }
+            ageRangeToDisp = range.toString();
         } else {
             ageRangeToDisp = "All";
         }
@@ -103,8 +106,9 @@ public class ShelterInfoActivity extends AppCompatActivity {
                         Users.currentUser.setNumberSpotsTaken(selectedCapacity);
                         numberSpots.setText("");
                         toast.show();
-                        capacity.setText("Current Capacity: "
-                                + Shelters.selectedShelter.getCurrentCapacity());
+                        String currCapacity = "Current capacity: "
+                                + Shelters.selectedShelter.getCurrentCapacity();
+                        capacity.setText(currCapacity);
                         mDatabase.child("Users").child(
                                 Users.currentUser.getUsername()).setValue(Users.currentUser);
                     } else {
