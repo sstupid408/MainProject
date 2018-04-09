@@ -51,21 +51,17 @@ public class FilterActivity extends AppCompatActivity {
 
         accept = findViewById(R.id.acceptButton);
         accept.setOnClickListener(view -> {
-            filter(new ArrayList<>(), new ArrayList<>());
+            filter(new ArrayList<>(), new ArrayList<>(), selectedName.getText().toString(),
+                    (String) selectedGender.getSelectedItem(),
+                    (String) selectedAge.getSelectedItem());
             onBackPressed();
 //            Intent newIntent = new Intent (FilterActivity.this, ShelterViewActivity.class);
 //            startActivity(newIntent);
         });
     }
 
-    private void filter(List<HomelessShelter> shelters, List<HomelessShelter> allShelters) {
-        String name;
-        String gender;
-        String age;
-        gender = (String) selectedGender.getSelectedItem();
-        age = (String) selectedAge.getSelectedItem();
-        name = selectedName.getText().toString();
-
+    public void filter(List<HomelessShelter> shelters, List<HomelessShelter> allShelters,
+                        String name, String gender, String age) {
         for (String currentShelter: Shelters.shelters.keySet()) {
             allShelters.add(Shelters.shelters.get(currentShelter));
         }
