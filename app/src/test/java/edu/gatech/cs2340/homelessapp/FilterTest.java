@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import edu.gatech.cs2340.homelessapp.Model.Shelters;
-
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -242,7 +241,7 @@ public class FilterTest {
 
 
     @Test
-    public void testWhenGenderAndAgeIsNotEmpty12() {
+    public void testWhenGenderAndAgeIsNotEmpty10() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -284,7 +283,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty5() {
+    public void testWhenNameIsNotEmpty4() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -294,7 +293,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty6() {
+    public void testWhenNameIsNotEmpty5() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -305,7 +304,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty9() {
+    public void testWhenNameIsNotEmpty6() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -315,7 +314,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty10() {
+    public void testWhenNameIsNotEmpty7() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -325,7 +324,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty11() {
+    public void testWhenNameIsNotEmpty8() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -336,7 +335,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty14() {
+    public void testWhenNameIsNotEmpty9() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -346,7 +345,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty15() {
+    public void testWhenNameIsNotEmpty10() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -357,7 +356,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty16() {
+    public void testWhenNameIsNotEmpty11() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -368,7 +367,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty17() {
+    public void testWhenNameIsNotEmpty12() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -379,7 +378,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty18() {
+    public void testWhenNameIsNotEmpty13() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -390,7 +389,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty21() {
+    public void testWhenNameIsNotEmpty14() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -400,7 +399,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty22() {
+    public void testWhenNameIsNotEmpty15() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -410,7 +409,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty23() {
+    public void testWhenNameIsNotEmpty16() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -420,7 +419,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty24() {
+    public void testWhenNameIsNotEmpty17() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -430,7 +429,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty25() {
+    public void testWhenNameIsNotEmpty18() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -440,7 +439,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty26() {
+    public void testWhenNameIsNotEmpty19() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -450,7 +449,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty27() {
+    public void testWhenNameIsNotEmpty20() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -460,7 +459,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty28() {
+    public void testWhenNameIsNotEmpty21() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -470,7 +469,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty29() {
+    public void testWhenNameIsNotEmpty22() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
@@ -480,7 +479,7 @@ public class FilterTest {
     }
 
     @Test
-    public void testWhenNameIsNotEmpty30() {
+    public void testWhenNameIsNotEmpty23() {
         List<HomelessShelter> shelters = new ArrayList<>();
         List<HomelessShelter> allShelters = new ArrayList<>();
         allShelters.addAll(Arrays.asList(shelter1, shelter2, shelter3, shelter4, shelter5, shelter6, shelter7, shelter8));
