@@ -52,10 +52,8 @@ public class MainScreenActivity extends AppCompatActivity {
                     && !"".equals(Users.currentUser.getCurrentShelterName())) {
                 HomelessShelter currentShelter = Shelters.shelters.get(
                         Users.currentUser.getCurrentShelterName());
-                if ((Shelters.shelters.get(
-                        Users.currentUser.getCurrentShelterName()).getCapacity() != null)
-                        && !"".equals(Shelters.shelters.get(
-                        Users.currentUser.getCurrentShelterName()).getCapacity())) {
+                if ((currentShelter.getCapacity() != null)
+                        && !"".equals(currentShelter.getCapacity())) {
                     currentShelter.updateCapacity(Users.currentUser.getNumberSpotsTaken());
                 }
                 Users.currentUser.setNumberSpotsTaken(0);
