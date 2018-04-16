@@ -25,7 +25,9 @@ import android.widget.EditText;
 
 import edu.gatech.cs2340.homelessapp.R;
 
-import edu.gatech.cs2340.homelessapp.Model.*;
+import edu.gatech.cs2340.homelessapp.Model.Users;
+import edu.gatech.cs2340.homelessapp.Model.HomelessUser;
+
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -189,21 +191,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // the progress spinner.
         int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-        mLoginFormView.setVisibility(true ? View.GONE : View.VISIBLE);
+        mLoginFormView.setVisibility(View.GONE);
         mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                true ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+                0).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                mLoginFormView.setVisibility(true ? View.GONE : View.VISIBLE);
+                mLoginFormView.setVisibility(View.GONE);
             }
         });
 
-        mProgressView.setVisibility(true ? View.VISIBLE : View.GONE);
+        mProgressView.setVisibility(View.VISIBLE);
         mProgressView.animate().setDuration(shortAnimTime).alpha(
-                true ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+                1).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                mProgressView.setVisibility(true ? View.VISIBLE : View.GONE);
+                mProgressView.setVisibility(View.VISIBLE);
             }
         });
     }

@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 import edu.gatech.cs2340.homelessapp.R;
 
-import edu.gatech.cs2340.homelessapp.Model.*;
+import edu.gatech.cs2340.homelessapp.Model.HomelessUser;
 
 /**
  * A registration screen for users to create accounts

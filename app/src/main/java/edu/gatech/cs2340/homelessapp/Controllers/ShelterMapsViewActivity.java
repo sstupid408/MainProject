@@ -81,8 +81,9 @@ public class ShelterMapsViewActivity extends FragmentActivity implements OnMapRe
                         shelter.getLongitude())).title(shelter.getName() + " | "
                         + "Phone: " + shelter.getPhoneNumber()));
             }
+            HomelessShelter shelter = shelters.get(0);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getLocation(
-                    shelters.get(0).getLatitude(),shelters.get(0).getLongitude()), zoomLevel));
+                    shelter.getLatitude(),shelter.getLongitude()), zoomLevel));
 
         }
 
@@ -113,8 +114,9 @@ public class ShelterMapsViewActivity extends FragmentActivity implements OnMapRe
                     shelter.getLongitude())).title(shelter.getName() + " | " + "Phone: "
                     + shelter.getPhoneNumber()));
         }
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getLocation(shelters.get(0).getLatitude(),
-                shelters.get(0).getLongitude()),zoomLevel));
+        HomelessShelter shelter = shelters.get(0);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getLocation(shelter.getLatitude(),
+                shelter.getLongitude()),zoomLevel));
 //        LatLng sydney = new LatLng(-34, 151);
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));

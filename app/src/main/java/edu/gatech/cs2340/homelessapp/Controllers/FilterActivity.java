@@ -14,6 +14,9 @@ import edu.gatech.cs2340.homelessapp.Model.HomelessShelter;
 import edu.gatech.cs2340.homelessapp.Model.Shelters;
 import edu.gatech.cs2340.homelessapp.R;
 
+/**
+ * An activity that filters by name, gender, or age.
+ */
 public class FilterActivity extends AppCompatActivity {
 
     private Spinner selectedGender;
@@ -60,6 +63,14 @@ public class FilterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * A method that filters by name, age, and gender.
+     * @param shelters the filtered shelters
+     * @param allShelters all the shelters
+     * @param name name of the shelter
+     * @param gender gender to filter by
+     * @param age age range to filter by
+     */
     public void filter(List<HomelessShelter> shelters, List<HomelessShelter> allShelters,
                         String name, String gender, String age) {
         for (String currentShelter: Shelters.shelters.keySet()) {
@@ -84,6 +95,14 @@ public class FilterActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * A methood that filters by gender
+     * @param shelters filtered shelters
+     * @param allShelters all the shelters
+     * @param gender filters by gender
+     * @return list of filtered shelters
+     */
     public List<HomelessShelter> filterGender(List<HomelessShelter> shelters,
                                                List<HomelessShelter> allShelters, String gender) {
         if (!"".equals(gender)) {
@@ -98,6 +117,14 @@ public class FilterActivity extends AppCompatActivity {
         }
         return allShelters;
     }
+
+    /**
+     * A methood that filters by age
+     * @param shelters filtered shelters
+     * @param allShelters all the shelters
+     * @param age filters by age
+     * @return list of filtered shelters
+     */
     public List<HomelessShelter> filterAge(List<HomelessShelter> shelters,
                                             List<HomelessShelter> allShelters, String age) {
         if (!"".equals(age)) {
