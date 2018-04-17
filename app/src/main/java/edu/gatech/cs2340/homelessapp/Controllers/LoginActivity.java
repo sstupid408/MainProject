@@ -141,6 +141,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Check for a valid email address.
         if (numLoginAttempts >= 3) {
             mEmailView.setError("Too many invalid login attempts");
+            focusView = mEmailView;
             cancel = true;
         } else if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
