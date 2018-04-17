@@ -50,13 +50,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-
-
+    private int numLoginAttempts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        numLoginAttempts = 0;
 
         Users.pullUsers();
 
@@ -139,7 +139,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        if (numLoginAttempts >= 3) {
+            mEmailView.setError("Too many invalid login attempts");
+            cancel = true;
+        } else if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
@@ -152,10 +155,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
+            numLoginAttempts++;
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
+            numLoginAttempts = 0;
             showProgress();
             setCurrentUserEmail(email);
             Intent newIntent = new Intent(LoginActivity.this, MainScreenActivity.class);
@@ -178,7 +183,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             validPassword = true;
         }
         return validPassword;
-        //return isEmailValid(email) && password.equals(user.getPassword());
     }
 
     /**
